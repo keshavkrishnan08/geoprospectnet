@@ -21,14 +21,14 @@ git clone git@github.com:keshavkrishnan08/Geothermal.git Geothermal2
 cd Geothermal2
 conda env create -f environment.yml && conda activate geoprospectnet
 
-# These four files are too large for GitHub and were excluded — regenerate them via:
+# These four files are too large for GitHub and were excluded - regenerate them via:
 # 1. data/processed/geophysics_patches.npy (5.4 GB) :
 python -m src.data.ingest_geophysics --config configs/cpu_max.yaml
-# 2. data/raw/geology/sgmc/USGS_SGMC_Geodatabase (740 MB) — pull via:
+# 2. data/raw/geology/sgmc/USGS_SGMC_Geodatabase (740 MB) - pull via:
 python -m src.data.ingest_geology --config configs/cpu_max.yaml
 # 3. data/raw/geology/qfaults/SHP/Qfaults_US_Database.dbf (194 MB) :
 #    auto-downloaded by ingest_geology when missing
-# 4. data/raw/labels/mordensky2023_full.csv (135 MB) — fetch with:
+# 4. data/raw/labels/mordensky2023_full.csv (135 MB) - fetch with:
 curl -L 'https://www.sciencebase.gov/catalog/file/get/63c3aaadd34ec1b9ad6c6f30' -o data/raw/labels/mordensky2023_full.csv
 
 # Then run the full pipeline:
