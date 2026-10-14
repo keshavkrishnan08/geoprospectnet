@@ -1,4 +1,4 @@
-"""Train GeoProspectNet — single split, LOF fold, or full LOF-CV sweep.
+"""Train GeoProspectNet: single split, LOF fold, or full LOF-CV sweep.
 
 CLI:
     python -m src.training.train --config configs/default.yaml --quick      # dev: 5 folds
@@ -73,7 +73,7 @@ def metrics_at_threshold(y_true: np.ndarray, y_score: np.ndarray, k: int = 50) -
     out["precision_at_k"] = float(y_true[top_k].mean())
     out["recall_at_k"] = float(y_true[top_k].sum() / n_pos)
 
-    # Mordensky 2025 head-to-head metrics — capture rate at top X% of cells.
+    # Mordensky 2025 head-to-head metrics: capture rate at top X% of cells.
     # The 2025 paper reports 85% capture in the top 10% for the Great Basin.
     n = len(y_score)
     for pct in (0.01, 0.05, 0.10, 0.25):
@@ -89,7 +89,7 @@ def build_z_lookup(model: torch.nn.Module, indices: np.ndarray,
                    processed: Path, use_thermal: bool, batch_size: int,
                    device: str, fused_dim: int) -> torch.Tensor:
     """Run the encoder + fusion path over `indices`, return [N_total, fused_dim]
-    keyed by cell_id. Cells not in `indices` keep their zero row — they are
+    keyed by cell_id. Cells not in `indices` keep their zero row, they are
     never queried as neighbours during this fold.
     """
     n_total = int(np.load(processed / "labels.npy", mmap_mode="r").shape[0])
@@ -176,7 +176,7 @@ def train_one_split(cfg: Dict, train_idx: np.ndarray, val_idx: np.ndarray,
     sched = CosineAnnealingLR(opt, T_max=cfg["training"]["scheduler_T_max"],
                               eta_min=cfg["training"]["scheduler_eta_min"])
 
-    # Pre-load neighbour table — used for smoothed validation each epoch.
+    # Pre-load neighbour table: used for smoothed validation each epoch.
     neighbor_indices = np.load(processed / "neighbor_indices.npy")
     labeled_for_lookup = np.unique(np.concatenate([train_idx, val_idx]))
     fused_dim = cfg["model"]["fused_dim"]

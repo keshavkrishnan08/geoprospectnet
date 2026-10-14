@@ -273,7 +273,7 @@ def fig3_cohort_distributions():
 
 
 # ---------------------------------------------------------------------------
-#  Fig 4  ·  Baselines — paired in-distribution vs hold-out
+#  Fig 4  ·  Baselines: paired in-distribution vs hold-out
 # ---------------------------------------------------------------------------
 def fig4_baselines():
     bl = pd.read_csv(ROOT / "outputs/results/baselines.csv").set_index("method")
@@ -759,7 +759,7 @@ def fig16_economics():
     fig, axes = plt.subplots(1, 3, figsize=(13.5, 4.4),
                               gridspec_kw={"wspace": 0.35}, facecolor="white")
 
-    # Panel A — LCOE vs Earthshot target
+    # Panel A: LCOE vs Earthshot target
     lcoe_b = e["lcoe_baseline_per_mwh"]
     lcoe_c = e["lcoe_cheap_case_per_mwh"]
     lcoe_e = e["lcoe_expensive_case_per_mwh"]
@@ -780,7 +780,7 @@ def fig16_economics():
     axes[0].legend(loc="upper right")
     _annotate_panel(axes[0], "a")
 
-    # Panel B — Fraction of GeoVision 2050 target (three stacked bars)
+    # Panel B: Fraction of GeoVision 2050 target (three stacked bars)
     p10 = e["mwe_p10"] / e["geovision_2050_target_MWe"]
     p50 = e["mwe_p50"] / e["geovision_2050_target_MWe"]
     p90 = e["mwe_p90"] / e["geovision_2050_target_MWe"]
@@ -803,7 +803,7 @@ def fig16_economics():
     axes[1].grid(axis="x", alpha=0.4); axes[1].grid(axis="y", visible=False)
     _annotate_panel(axes[1], "b")
 
-    # Panel C — CO₂ displacement
+    # Panel C: CO₂ displacement
     co2_p10 = e["co2_displaced_Mt_30yr_p10"]
     co2_p50 = e["co2_displaced_Mt_30yr_p50"]
     co2_p90 = e["co2_displaced_Mt_30yr_p90"]

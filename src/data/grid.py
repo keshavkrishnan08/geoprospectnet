@@ -1,4 +1,4 @@
-"""Shared grid utilities — define the western-US 4km grid used by every modality.
+"""Shared grid utilities: define the western-US 4km grid used by every modality.
 
 We work in EPSG:4326 for storage (lon, lat) but reproject to EPSG:5070
 (Albers Equal Area Conic CONUS) whenever we need real distances.
@@ -36,7 +36,7 @@ class GridSpec:
         """Return a DataFrame of all grid-cell centers with columns
         ``cell_id, row, col, lat, lon``.
 
-        Grid is laid out on a regular lat/lon mesh — at this resolution the
+        Grid is laid out on a regular lat/lon mesh, at this resolution the
         Earth-curvature error vs an equal-area projection is well under
         the 4 km cell size.
         """

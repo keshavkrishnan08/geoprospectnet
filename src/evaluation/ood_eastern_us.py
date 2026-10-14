@@ -1,4 +1,4 @@
-"""Out-of-distribution test on the eastern United States — in-memory scoring,
+"""Out-of-distribution test on the eastern United States, in-memory scoring,
 no large disk writes.
 
 Builds a 4 km grid east of the Rockies, ingests gravity / mag / heat flow /

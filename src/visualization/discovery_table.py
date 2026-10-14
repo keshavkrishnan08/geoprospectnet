@@ -1,4 +1,4 @@
-"""Format Table 3 — discovered sites — as LaTeX."""
+"""Format Table 3: discovered sites, as LaTeX."""
 from __future__ import annotations
 
 import argparse

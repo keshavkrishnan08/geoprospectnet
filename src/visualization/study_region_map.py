@@ -1,4 +1,4 @@
-"""Figure 2 — study region with known fields and data coverage."""
+"""Figure 2: study region with known fields and data coverage."""
 from __future__ import annotations
 
 import argparse

@@ -93,7 +93,7 @@ def _interp_heatflow(smu_dir: Path, lats: np.ndarray, lons: np.ndarray) -> np.nd
         return np.full(lats.shape, np.nan, dtype=np.float32)
 
     pts = pd.concat(frames, ignore_index=True)
-    # SMU uses -9999 / -99999 as "missing" sentinels — strip them out
+    # SMU uses -9999 / -99999 as "missing" sentinels, strip them out
     pts = pts[(pts.hf > 10) & (pts.hf < 500)]
     points = pts[["lon", "lat"]].values.astype(np.float64)
     values = pts.hf.values.astype(np.float64)
@@ -173,7 +173,7 @@ def main():
 
     # Channels 4-5 are derived from heat flow (channel 3) by a 1-D conductive
     # model. This assumes pure conduction and uniform radiogenic heat
-    # production — assumptions that *break down* in hydrothermally active
+    # production: assumptions that *break down* in hydrothermally active
     # areas (i.e. our positive class). We keep them because they linearise
     # the heat-flow signal at depth, but ablation row A* in the paper
     # removes channels 3-5 to confirm that the model does not rely on this

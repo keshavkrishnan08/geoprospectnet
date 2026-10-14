@@ -164,7 +164,7 @@ def _aggregate(grid_df: pd.DataFrame,
     if points.empty:
         return pd.DataFrame(index=grid_df.index)
 
-    # Approximate metric coords (km) — good enough for radius queries at CONUS scale.
+    # Approximate metric coords (km): good enough for radius queries at CONUS scale.
     lat0 = float(grid_df["lat"].mean())
     def to_xy(lat, lon):
         x = (np.asarray(lon, dtype=np.float64) * 111.32 * np.cos(np.radians(lat0)))
@@ -223,7 +223,7 @@ def main():
     bht_tree = make_tree(bht)
 
     def _safe(v):
-        # Replace NaN / inf with 0 — Python's `or 0.0` doesn't catch NaN.
+        # Replace NaN / inf with 0: Python's `or 0.0` doesn't catch NaN.
         v = float(v)
         return 0.0 if not np.isfinite(v) else v
 

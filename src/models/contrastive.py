@@ -21,7 +21,7 @@ class MultiModalContrastiveLoss(nn.Module):
 
     def forward(self, embeddings: List[torch.Tensor],
                 masks: List[torch.Tensor]) -> torch.Tensor:
-        # Wider clamp than CLIP-tight 1.0 — the contrastive head may need to
+        # Wider clamp than CLIP-tight 1.0: the contrastive head may need to
         # soften when modality alignment is genuinely hard at a location.
         temp = torch.exp(self.log_temperature).clamp(min=0.01, max=10.0)
         device = embeddings[0].device

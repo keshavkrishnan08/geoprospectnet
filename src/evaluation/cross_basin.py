@@ -1,7 +1,7 @@
 """Cross-basin transfer experiment.
 
 Train on one tectonic province, evaluate on another. Tests whether the
-learnt prospectivity signal generalises across geological settings — a
+learnt prospectivity signal generalises across geological settings, a
 question no published geothermal-ML study has answered.
 
 Default protocol:

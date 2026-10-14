@@ -65,7 +65,7 @@ def _estimate_T_res(cluster_lat: float, cluster_lon: float,
     tree = cKDTree(grid_xy)
     _, nearest_cell = tree.query([px, py], k=1)
 
-    # Geothermometer features 2 (T_chalcedony) and 3 (T_NaK), z-scored — can't
+    # Geothermometer features 2 (T_chalcedony) and 3 (T_NaK), z-scored, can't
     # invert without normalisation stats; we read them directly when available
     # by checking if the standardised value is materially > 0 (i.e. above the
     # training-set mean). Falls back to heat-flow-based estimate.
@@ -77,7 +77,7 @@ def _estimate_T_res(cluster_lat: float, cluster_lon: float,
         return min(T_est, 280.0), "geothermometer"
 
     # Fall back: conductive temperature at 2 km from heat flow channel (3) of
-    # geophysics — z-scored, so we use the centre-of-patch value as a proxy.
+    # geophysics: z-scored, so we use the centre-of-patch value as a proxy.
     hf_z = float(geophys_patches[nearest_cell, 3, 16, 16])
     # rough back-of-envelope: 80 mW/m^2 + 40 mW/m^2 per std → T(2km) = ~80 + 30 * hf_z
     T_est = 80.0 + 30.0 * hf_z

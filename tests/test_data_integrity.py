@@ -50,7 +50,7 @@ def test_grid_coords_in_west_us_box(grid_coords):
 
 
 def test_train_mask_covers_known_positives(processed, labels):
-    """Every positive cell must be in the labeled training universe — otherwise
+    """Every positive cell must be in the labeled training universe, otherwise
     we'd silently throw away ground-truth fields."""
     train_mask = np.load(processed / "train_mask.npy").astype(bool)
     pos = labels.astype(bool)

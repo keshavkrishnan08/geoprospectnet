@@ -1,4 +1,4 @@
-"""Figure 6 — spatial smoothing α sensitivity."""
+"""Figure 6: spatial smoothing α sensitivity."""
 from __future__ import annotations
 
 import argparse

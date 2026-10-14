@@ -1,4 +1,4 @@
-"""Negative-control evaluation — does the model correctly say NO to obviously
+"""Negative-control evaluation: does the model correctly say NO to obviously
 non-prospective places?
 
 Reviewers will demand this. A "favourability" model that gives 0.99 to deep
@@ -9,10 +9,10 @@ to (a) known fields, (b) the post-2008 NV permit hold-out, and (c) random
 cells in the western US.
 
 Negative controls:
-    NC1 — Colorado Plateau interior (high elevation craton, no Quaternary
+    NC1: Colorado Plateau interior (high elevation craton, no Quaternary
           faulting, no Holocene volcanism within 200 km)
-    NC2 — Eastern Great Basin sedimentary basins far from any active fault
-    NC3 — Random "deep" cells: > 100 km from any positive label, > 50 km
+    NC2: Eastern Great Basin sedimentary basins far from any active fault
+    NC3: Random "deep" cells: > 100 km from any positive label, > 50 km
           from any thermal spring, low heat flow
 """
 from __future__ import annotations
@@ -59,18 +59,18 @@ def _build_neg_controls(grid: pd.DataFrame, fields: pd.DataFrame,
     ftree = cKDTree(fxy)
     d_to_field, _ = ftree.query(gxy, k=1)
 
-    # NC1 — Colorado Plateau interior: lat 36-40, lon -111 to -108, > 200 km from any field
+    # NC1: Colorado Plateau interior: lat 36-40, lon -111 to -108, > 200 km from any field
     nc1_mask = (
         grid.lat.between(36, 40) & grid.lon.between(-111, -108)
         & (d_to_field > 200)
     )
-    # NC2 — Eastern Great Basin sed basins far from active faulting:
+    # NC2: Eastern Great Basin sed basins far from active faulting:
     #       lat 38-42, lon -116 to -113, > 100 km from any field, no spring coverage (mask 1=False)
     nc2_mask = (
         grid.lat.between(38, 42) & grid.lon.between(-116, -113)
         & (d_to_field > 100) & (~masks[:, 1])  # geochem mask off ⇒ no springs nearby
     )
-    # NC3 — Random "deep" cells: > 100 km from any positive, no spring coverage
+    # NC3: Random "deep" cells: > 100 km from any positive, no spring coverage
     nc3_mask = (d_to_field > 100) & (~masks[:, 1])
 
     def sample(mask, n, label):

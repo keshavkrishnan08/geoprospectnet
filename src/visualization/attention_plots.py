@@ -1,4 +1,4 @@
-"""Figure 5 — Permutation importance + attention weights by tectonic province."""
+"""Figure 5: Permutation importance + attention weights by tectonic province."""
 from __future__ import annotations
 
 import argparse

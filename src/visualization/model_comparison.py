@@ -1,4 +1,4 @@
-"""Figure 3 — ROC curves of all models (mean across LOF-CV folds).
+"""Figure 3: ROC curves of all models (mean across LOF-CV folds).
 
 Because LOF folds have different test compositions, we plot the per-fold ROC
 curves (light) plus the mean curve (bold) for each model. Requires that each

@@ -56,7 +56,7 @@ def main():
 
     tif = raw / "satellite" / "thermal_anomaly.tif"
     if not tif.exists():
-        # Write a tiny sentinel — the Dataset detects this shape and emits
+        # Write a tiny sentinel: the Dataset detects this shape and emits
         # zero patches on-the-fly instead of materialising 3.8 GB of zeros.
         print(f"[skip] {tif} missing; writing sentinel (use_thermal will be ignored at load time)")
         np.save(processed / "thermal_patches.npy",

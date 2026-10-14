@@ -1,4 +1,4 @@
-"""Format Table 2 — ablation study — as a publication-ready LaTeX snippet."""
+"""Format Table 2: ablation study, as a publication-ready LaTeX snippet."""
 from __future__ import annotations
 
 import argparse

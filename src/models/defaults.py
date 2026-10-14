@@ -10,7 +10,7 @@ class LearnedDefault(nn.Module):
     """A trainable embedding substituted when a modality is absent.
 
     Using zeros would corrupt both the contrastive loss (defaults would align
-    to defaults — meaningless) and the attention fusion. A learned default
+    to defaults: meaningless) and the attention fusion. A learned default
     lets the model encode "no information" explicitly.
     """
 

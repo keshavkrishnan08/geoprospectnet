@@ -108,7 +108,7 @@ def evaluate(ckpt_path: Path, config_path: str, holdout_path: Path) -> Dict:
         "nc1_mean_pct": float(nc_pcts["NC1"].mean()) if len(nc_pcts["NC1"]) else float("nan"),
         "nc3_mean_pct": float(nc_pcts["NC3"].mean()) if len(nc_pcts["NC3"]) else float("nan"),
         "random_mean_pct": float(nc_pcts["random"].mean()),
-        # SEPARATION GAP — the headline metric to maximise
+        # SEPARATION GAP: the headline metric to maximise
         "separation_gap": float(pos_pcts.mean() - nc_pcts["NC3"].mean()) if len(nc_pcts["NC3"]) else float("nan"),
     }
     return summary

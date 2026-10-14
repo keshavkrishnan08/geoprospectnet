@@ -1,4 +1,4 @@
-"""Binary classification head — returns raw logits."""
+"""Binary classification head: returns raw logits."""
 from __future__ import annotations
 
 import torch

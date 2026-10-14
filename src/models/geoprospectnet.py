@@ -1,4 +1,4 @@
-"""Full GeoProspectNet model — 4 encoders + contrastive + fusion + spatial + classifier."""
+"""Full GeoProspectNet model: 4 encoders + contrastive + fusion + spatial + classifier."""
 from __future__ import annotations
 
 from typing import Dict, List, Optional
@@ -16,7 +16,7 @@ from src.models.fusion import AttentionFusion
 from src.models.spatial import SpatialSmoothing
 
 
-# Canonical modality order — used everywhere so attention weights align across
+# Canonical modality order: used everywhere so attention weights align across
 # the codebase (figures, ablation, paper).
 MODALITY_ORDER = ("geophysics", "geochemistry", "thermal", "geology")
 

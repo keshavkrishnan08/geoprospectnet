@@ -12,7 +12,7 @@ Improvements over `mwe_estimation.py` (the screening version):
 
     capped at 0.18 (the empirical ceiling for triple-flash plants on 280 °C
     systems). At T = 90 °C this gives ≈ 0, at 180 °C ≈ 0.09, at 250 °C ≈
-    0.13, at 300 °C ≈ 0.16 — matching the band Williams 2008 Table 2.
+    0.13, at 300 °C ≈ 0.16: matching the band Williams 2008 Table 2.
 
 2.  **Plant-type-aware recovery factor** instead of a flat 0.10:
         T < 150 °C  → RF ~ Lognormal(μ=0.08, σ=0.30)  (binary)

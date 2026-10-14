@@ -175,7 +175,7 @@ def main():
                 # GeoProspectNet supports a LIST of dropped modalities; we
                 # drop everything except `keep`, giving a faithful
                 # single-modality baseline that reuses the same architecture
-                # and trainer (with contrastive disabled — no pairs).
+                # and trainer (with contrastive disabled: no pairs).
                 sm_cfg = copy.deepcopy(cfg)
                 sm_cfg["modalities"]["drop"] = [m for m in modalities if m != keep]
                 sm_cfg["training"]["contrastive_weight"] = 0.0

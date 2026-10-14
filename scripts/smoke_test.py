@@ -106,7 +106,7 @@ def section_data_files():
             p = ROOT / f
             if not p.exists():
                 raise FileNotFoundError(p)
-    # geophysics_patches.npy is .gitignored — soft check
+    # geophysics_patches.npy is .gitignored: soft check
     p = ROOT / "data/processed/geophysics_patches.npy"
     if not p.exists():
         print(f"  {WARN} geophysics_patches.npy missing (5.4 GB) — regenerate with src.data.ingest_geophysics")

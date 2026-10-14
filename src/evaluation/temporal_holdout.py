@@ -44,7 +44,7 @@ def main(config_path: str = "configs/cpu_max.yaml",
         ckpt = Path(checkpoint)
     print(f"loading checkpoint: {ckpt}")
     ck = torch.load(ckpt, map_location=device, weights_only=False)
-    # Use the config the checkpoint was trained with if it stored one — that's
+    # Use the config the checkpoint was trained with if it stored one, that's
     # the only way embed_dim / fused_dim line up across configs.
     if isinstance(ck, dict) and "config" in ck:
         cfg = ck["config"]

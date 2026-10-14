@@ -1,4 +1,4 @@
-"""Continental geothermal discovery — train on all data, run MC-Dropout inference
+"""Continental geothermal discovery: train on all data, run MC-Dropout inference
 across the full western-US grid, cluster high-confidence positives, and check
 geological plausibility.
 
@@ -57,7 +57,7 @@ def mc_dropout_inference(model: torch.nn.Module, loader, device: str,
     deterministic z_lookup.
 
     A per-pass torch RNG state is set from ``seed`` so the entire MC-Dropout
-    sweep is bit-reproducible — successive runs produce identical mean and std
+    sweep is bit-reproducible: successive runs produce identical mean and std
     arrays, which in turn produces identical discovery clusters and SHA-256
     pre-registration manifests.
     """

@@ -75,7 +75,7 @@ def main():
 
         sm_cfg = copy.deepcopy(cfg)
         sm_cfg["modalities"]["drop"] = [m for m in all_modalities if m != keep]
-        # Contrastive loss is undefined with one modality — kill it.
+        # Contrastive loss is undefined with one modality, kill it.
         sm_cfg["training"]["contrastive_weight"] = 0.0
         # Optional overrides (default to the config values).
         if args.epochs is not None:

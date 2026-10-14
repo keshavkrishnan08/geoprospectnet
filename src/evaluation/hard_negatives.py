@@ -1,4 +1,4 @@
-"""Hard-negative validation cohort — cells where the geology makes a
+"""Hard-negative validation cohort: cells where the geology makes a
 hydrothermal system effectively impossible, used to test whether the model's
 constructed negatives are well-calibrated.
 
@@ -13,7 +13,7 @@ We build four cohorts of increasing geological confidence:
                                from any extensional zone, deep crust
 
 If the model is genuinely learning geological structure (not just "far from
-positives"), NC4/NC5/NC6 should score *lower* than NC3 — the model should
+positives"), NC4/NC5/NC6 should score *lower* than NC3, the model should
 distinguish "merely far from a field" from "geologically incompatible."
 
 Outputs ``outputs/results/hard_negative_cohorts.csv``.
@@ -72,7 +72,7 @@ def main():
 
     cohorts = {}
 
-    # NC3 random deep (baseline — already in negative_controls.csv)
+    # NC3 random deep (baseline: already in negative_controls.csv)
     mask_nc3 = (d_to_field > 100) & (~masks[:, 1])
     cohorts["NC3_random_deep"] = mask_nc3
 

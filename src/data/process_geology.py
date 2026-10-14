@@ -127,7 +127,7 @@ def _sample_sgmc_lithology(raw: Path, lats: np.ndarray, lons: np.ndarray):
     if len(gdf) == 0:
         return None
 
-    # SGMC_Geology has a GENERALIZED_LITH column directly — preferred.
+    # SGMC_Geology has a GENERALIZED_LITH column directly, preferred.
     lith_col = None
     for cand in ("GENERALIZED_LITH", "GENERALIZ", "MAJOR1", "ROCKTYPE1", "LITH1", "LITHOLOGY", "ROCKTYPE"):
         if cand in gdf.columns:
@@ -170,7 +170,7 @@ def _sample_sgmc_lithology(raw: Path, lats: np.ndarray, lons: np.ndarray):
     def _contains(needles):
         return np.array([any(n in s for n in needles) for s in lith_per_cell])
 
-    # Match against the SGMC GENERALIZED_LITH categories — these are
+    # Match against the SGMC GENERALIZED_LITH categories, these are
     # the actual category strings, not free-text descriptions.
     return {
         "volcanic":    _contains(("igneous, volcanic", "metamorphic, volcanic", "basalt", "andesite", "rhyolite")).astype(np.float32),
@@ -235,7 +235,7 @@ def _fault_intersections(fault_gdf, cos_lat0, lat0):
     xy = np.column_stack([pts[:, 0] * 111.32 * cos_lat0, pts[:, 1] * 111.32])
     owners = np.array(owners)
 
-    # Find endpoint pairs within 1 km belonging to different faults — these
+    # Find endpoint pairs within 1 km belonging to different faults, these
     # are our intersection proxies.
     tree = cKDTree(xy)
     pairs = tree.query_pairs(r=1.0, output_type="ndarray")

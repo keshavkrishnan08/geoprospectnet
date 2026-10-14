@@ -16,7 +16,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-# B1-B4 use scikit-learn / xgboost / lightgbm — imported lazily so missing
+# B1-B4 use scikit-learn / xgboost / lightgbm, imported lazily so missing
 # packages don't crash the unit tests for the deep model.
 
 
@@ -93,7 +93,7 @@ def make_lgbm():
 
 # B5 MLP (flat features)
 class FlatMLP(nn.Module):
-    """Plain MLP over the 57-d flat-feature vector — B5 baseline."""
+    """Plain MLP over the 57-d flat-feature vector, B5 baseline."""
 
     def __init__(self, in_features: int, hidden: int = 128, dropout: float = 0.3):
         super().__init__()
@@ -113,7 +113,7 @@ class FlatMLP(nn.Module):
 
 # B6 Late Fusion MLP (full deep encoders, NO contrastive loss).
 # Implemented by setting `training.contrastive_weight: 0` in config and the
-# attention layer still active — that's effectively "deep late-fusion MLP".
+# attention layer still active: that's effectively "deep late-fusion MLP".
 # We expose a small helper just to make the intent explicit.
 def make_late_fusion_config(base: dict) -> dict:
     cfg = {k: dict(v) if isinstance(v, dict) else v for k, v in base.items()}
@@ -122,7 +122,7 @@ def make_late_fusion_config(base: dict) -> dict:
 
 
 # B7 Single-modality models. Each is a copy of GeoProspectNet with all but
-# one modality dropped (and contrastive disabled — no pairs to contrast).
+# one modality dropped (and contrastive disabled, no pairs to contrast).
 def make_single_modality_config(base: dict, keep: str) -> dict:
     cfg = {k: dict(v) if isinstance(v, dict) else v for k, v in base.items()}
     cfg["training"]["contrastive_weight"] = 0.0

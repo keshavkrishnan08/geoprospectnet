@@ -27,7 +27,7 @@ def test_continental_uncertainty_higher_in_score_tail(root: Path):
     """MC-Dropout uncertainty should be largest in the *transition* band, not
     the saturated tails. Empirically with cpu_max we expect mean σ at the
     high-confidence band (>0.7) to be at least 5× the mean σ in the
-    near-zero band (<0.01) — otherwise the dropout layer is broken."""
+    near-zero band (<0.01): otherwise the dropout layer is broken."""
     pm = root / "outputs/results/prospectivity_mean.npy"
     pu = root / "outputs/results/prospectivity_std.npy"
     if not (pm.exists() and pu.exists()):

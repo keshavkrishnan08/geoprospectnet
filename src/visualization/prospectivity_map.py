@@ -1,4 +1,4 @@
-"""Figure 4 — the headline continental prospectivity map.
+"""Figure 4: the headline continental prospectivity map.
 
 Plots p(geothermal) across the western US with known fields and discovered
 sites overlaid. Falls back to a plain matplotlib map if cartopy is unavailable

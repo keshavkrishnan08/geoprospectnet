@@ -2,7 +2,7 @@
 
 The LOF-CV split places ALL positive cells from one field in the held-out test
 fold, ensuring that positives in train and test never come from the same
-geothermal system — the strongest test of generalization.
+geothermal system: the strongest test of generalization.
 """
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ def main():
     # ---- Field clustering ---------------------------------------------------
     # Two known fields within 10 km are functionally the same hydrothermal
     # system (e.g. Brady's / Desert Peak). Without clustering, holding out
-    # field A would leave field B's positive halo in the training set —
+    # field A would leave field B's positive halo in the training set, 
     # silent label leakage. We group fields by single-link clustering at a
     # 10 km threshold and treat each cluster as one LOF fold.
     import pandas as pd

@@ -1,4 +1,4 @@
-"""Evaluation metric utilities — thin wrappers around scikit-learn for code reuse."""
+"""Evaluation metric utilities: thin wrappers around scikit-learn for code reuse."""
 from __future__ import annotations
 
 from typing import Dict, List

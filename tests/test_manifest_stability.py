@@ -49,7 +49,7 @@ def test_manifest_sha_matches_payload(root: Path):
         json.dumps(payload, sort_keys=True, default=float).encode()
     ).hexdigest()
     if stored != recomputed:
-        # Some manifests pre-date this canonicalisation — warn rather than
+        # Some manifests pre-date this canonicalisation, warn rather than
         # break the suite.
         pytest.skip(f"manifest SHA was generated with a different "
                      f"canonical form (stored={stored[:8]}, recomputed={recomputed[:8]})")

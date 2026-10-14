@@ -13,7 +13,7 @@ Method:
   4. Report distribution and compare against the 250 m prior.
 
 The result is NOT a direct measurement of the hydrothermal reservoir
-thickness — that requires drilling — but it is the strongest *geophysical*
+thickness: that requires drilling, but it is the strongest *geophysical*
 constraint available without site visits. If discoveries cluster in
 negative-anomaly basins, the 250 m prior is geologically plausible.
 
@@ -35,7 +35,7 @@ MGAL_TO_SI = 1e-5  # 1 mGal = 1e-5 m/s^2
 
 # h [m] = Δg [mGal] · 1e-5 / (2π · G · Δρ)
 # coefficient for converting mGal to metres of basin fill (positive sign):
-MGAL_TO_METRES = MGAL_TO_SI / (2 * np.pi * G_const * abs(DELTA_RHO))  # ≈ 14894 m / mGal — too big
+MGAL_TO_METRES = MGAL_TO_SI / (2 * np.pi * G_const * abs(DELTA_RHO))  # ≈ 14894 m / mGal: too big
 # the standard rule-of-thumb in geophysics is: 1 mGal of residual ≈
 # ~10–25 m of basin fill, but exact value depends on density contrast.
 # We adopt the conservative geophysics convention of ~50 m / mGal residual.
@@ -53,7 +53,7 @@ def main():
         return
     with rasterio.open(grav_path) as src_r:
         bouguer = src_r.read(1)
-        # The raster has no CRS metadata — assume EPSG:4326 with bounds
+        # The raster has no CRS metadata: assume EPSG:4326 with bounds
         # (-124.7, 25.1, -65.7, 52.0).
         west, south = -124.7, 25.1
         east, north = -65.7, 52.0

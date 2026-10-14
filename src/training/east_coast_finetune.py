@@ -6,7 +6,7 @@ turns the eastern OOD evaluation into a real predictive model by:
   1. Curating ~25 documented eastern hydrothermal / warm-spring positives
      (Ar, GA, WV, NY, VA, PA, NC, MA, etc.) from USGS GEOTHERM and the AAPG
      thermal-springs compilation.
-  2. Sampling eastern negatives — random eastern grid cells >50 km from any
+  2. Sampling eastern negatives: random eastern grid cells >50 km from any
      positive, with heat flow <55 mW/m² (Birch province baseline).
   3. Building 6-channel geophysics patches by broadcasting sampled gravity /
      magnetic / heat-flow / elevation values to 32x32 (same broadcast
@@ -72,7 +72,7 @@ ROOT = Path(__file__).resolve().parents[2]
 EAST_POSITIVES = pd.DataFrame([
     # Ouachita / Ozark
     dict(name="Hot Springs, AR",        lat=34.5117, lon=-93.0531,  T_C=62, type="thermal"),
-    # Appalachian Valley & Ridge — Virginia / WV cluster
+    # Appalachian Valley & Ridge: Virginia / WV cluster
     dict(name="Hot Springs, VA",        lat=38.0026, lon=-79.8333,  T_C=42, type="thermal"),
     dict(name="Warm Springs, VA",       lat=38.0521, lon=-79.7842,  T_C=37, type="thermal"),
     dict(name="Healing Springs, VA",    lat=37.8762, lon=-79.8245,  T_C=27, type="warm"),
@@ -83,7 +83,7 @@ EAST_POSITIVES = pd.DataFrame([
     dict(name="Sulphur Spring, WV",     lat=37.7900, lon=-80.3050,  T_C=22, type="warm"),
     dict(name="Bedford Springs, PA",    lat=40.0049, lon=-78.5023,  T_C=18, type="warm"),
     dict(name="Minnequa Spring, PA",    lat=41.7156, lon=-76.7811,  T_C=15, type="cool_spring"),
-    # Piedmont / Blue Ridge — NC / GA / SC
+    # Piedmont / Blue Ridge: NC / GA / SC
     dict(name="Warm Springs, GA",       lat=32.8893, lon=-84.6810,  T_C=33, type="warm"),
     dict(name="Hot Springs, NC",        lat=35.8915, lon=-82.8298,  T_C=40, type="thermal"),
     dict(name="Lithia Springs, GA",     lat=33.7959, lon=-84.6608,  T_C=18, type="warm"),
@@ -259,7 +259,7 @@ def loso_validation(cfg: Dict, base_state: Dict, neg_feats: np.ndarray,
 
         model = GeoProspectNet(cfg).to(device)
         model.load_state_dict(base_state)
-        # Tiny number of epochs — only a probe of recoverability
+        # Tiny number of epochs: only a probe of recoverability
         fine_tune(model, train_feats, train_labels,
                   np.vstack([pos_feats[[k]], train_neg[:200]]).astype(np.float32),
                   np.concatenate([[1.0], np.zeros(200)]),
