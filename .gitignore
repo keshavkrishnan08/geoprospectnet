@@ -37,3 +37,7 @@ tmp_*
 .env
 *.key
 *credentials*
+
+# Local tool config
+CLAUDE.md
+.claude/
