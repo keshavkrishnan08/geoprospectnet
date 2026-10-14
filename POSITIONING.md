@@ -1,6 +1,6 @@
 # Positioning + experimental setup revisions
 
-After the deep literature review (Mordensky 2025, Brown 2023, Smith 2024 PIGNN, SatCLIP/SeisCLIP, Zanskar Big Blind Dec 2025, GHFDB 2024), the project's experimental design and positioning need to shift. Paper text is unchanged for now — this doc captures what the experiments need to do and why.
+After the deep literature review (Mordensky 2025, Brown 2023, Smith 2024 PIGNN, SatCLIP/SeisCLIP, Zanskar Big Blind Dec 2025, GHFDB 2024), the project's experimental design and positioning need to shift. Paper text is unchanged for now, this doc captures what the experiments need to do and why.
 
 ## What the lit review changed
 
@@ -10,7 +10,7 @@ After the deep literature review (Mordensky 2025, Brown 2023, Smith 2024 PIGNN, 
 
 3. **Smith et al. 2024 (PIGNN, Geothermal Energy)** is the deep-learning-on-CONUS competitor. Physics-informed graph network for thermal Earth model. Must cite as parallel deep approach.
 
-4. **SatCLIP / GeoCLIP / SeisCLIP** (2023–2025) ALREADY use CLIP-style alignment in adjacent Earth-science settings. We cannot claim "first contrastive in Earth science." Defensible scope: "first geothermal-prospectivity application of cross-modal contrastive alignment."
+4. **SatCLIP / GeoCLIP / SeisCLIP** (2023-2025) ALREADY use CLIP-style alignment in adjacent Earth-science settings. We cannot claim "first contrastive in Earth science." Defensible scope: "first geothermal-prospectivity application of cross-modal contrastive alignment."
 
 5. **Zanskar Big Blind, December 2025**. First commercially confirmed AI-driven blind geothermal discovery in 30+ years (Nevada, 250°F at ~2,700 ft). If we ignore it, Nature Energy and Joule reject for being out-of-touch with the field.
 
@@ -35,11 +35,11 @@ Drop everything broader.
 - **Status**: not yet implemented. Just add a download instruction in `download.py` manual section.
 
 ### E3. Cross-basin transfer experiment (PRIORITY)
-- **Why**: addresses a gap nobody else has filled — "does prospectivity learnt on Great Basin transfer to Cascades or Snake River Plain?"
-- **How**: pretrain on Great Basin (lat 36–42, lon -120 to -114), evaluate top-percentile capture on Cascades + Snake River Plain held-out positives.
+- **Why**: addresses a gap nobody else has filled: "does prospectivity learnt on Great Basin transfer to Cascades or Snake River Plain?"
+- **How**: pretrain on Great Basin (lat 36-42, lon -120 to -114), evaluate top-percentile capture on Cascades + Snake River Plain held-out positives.
 - **Status**: needs a new evaluation script `src/evaluation/cross_basin.py`. Not blocking the main results.
 
-### E4. InSAR Sentinel-1 deformation as 5th modality (OPTIONAL — strong reach)
+### E4. InSAR Sentinel-1 deformation as 5th modality (OPTIONAL: strong reach)
 - **Why**: existing literature uses InSAR only for monitoring, not as a prospectivity input. Genuine novelty.
 - **How**: ASF HyP3 service generates interferograms on demand. Compute median descending-track LOS velocity over 2016-2024 per cell. Feed to a 5th encoder (small CNN on a 32×32 deformation patch).
 - **Status**: deferred. Significant data-pull effort. Mention as "future work" if not run; add as a 5th modality if Kaggle compute allows.
@@ -67,17 +67,17 @@ Drop everything broader.
 
 | Venue | Fit before lit review | Fit after experimental additions |
 |---|---|---|
-| Geothermics | 8/10 | 9/10 — add E1 + E2 + E5 |
-| Energy Reports | 6.5/10 | 7.5/10 — add E1 + E2 |
-| Joule | 6/10 | 8/10 — add E1 + E5 + E6 |
-| Nature Energy | 4/10 | 7/10 — add E1 + E5 + E6 + ideally E4 |
+| Geothermics | 8/10 | 9/10, add E1 + E2 + E5 |
+| Energy Reports | 6.5/10 | 7.5/10, add E1 + E2 |
+| Joule | 6/10 | 8/10, add E1 + E5 + E6 |
+| Nature Energy | 4/10 | 7/10, add E1 + E5 + E6 + ideally E4 |
 
 ## Implementation status
 
 | ID | Task | Status | File |
 |---|---|---|---|
 | E1 | Mordensky 2025 capture-rate metric | **done** | `src/evaluation/metrics.py::capture_rate_at_top_pct`, integrated in `train.py::metrics_at_threshold` and `cross_validation.py` |
-| E2 | GHFDB 2024 heat-flow source | doc only | drop GHFDB CSVs into `data/raw/geophysics/smu_heatflow/` — `_interp_heatflow` reads any lat/lon/hf-shaped CSV |
+| E2 | GHFDB 2024 heat-flow source | doc only | drop GHFDB CSVs into `data/raw/geophysics/smu_heatflow/`, `_interp_heatflow` reads any lat/lon/hf-shaped CSV |
 | E3 | Cross-basin transfer experiment | **done** | `src/evaluation/cross_basin.py` |
 | E4 | InSAR Sentinel-1 5th modality | deferred | future work |
 | E5 | Zanskar Big Blind blind validation | **done** | `data/metadata/zanskar_validation.csv` + `src/evaluation/blind_validation.py` |
@@ -87,23 +87,23 @@ Drop everything broader.
 
 `scripts/run_all.sh` is now ordered to put discovery in the headline position:
 
-1. **Phase A (data):** download + process — same as before.
+1. **Phase A (data):** download + process: same as before.
 2. **Phase B (training):** single discovery model on all labelled data.
-3. **Phase C (HEADLINE — discovery):** continental MC-Dropout inference → ranked candidates → MWe estimates → Zanskar blind validation. This is the paper's primary contribution.
+3. **Phase C (HEADLINE: discovery):** continental MC-Dropout inference → ranked candidates → MWe estimates → Zanskar blind validation. This is the paper's primary contribution.
 4. **Phase D (benchmarking):** LOF-CV against baselines including Mordensky-style capture rates. Supporting evidence for the discovery quality.
 5. **Phase E (architectural justification):** ablation, cross-basin transfer, modality analysis. Justifies the architectural choices.
 6. **Phase F (figures):** all plots + LaTeX tables.
 
 ## Run order on Kaggle
 
-1. **First session (CPU notebook, ~2 hr):** Phase A — data download + processing.
-2. **Second session (GPU, ~2 hr):** Phase B + Phase C — train discovery model + headline outputs. **At this point you have the paper's main result.**
-3. **Third session (GPU, ~6-10 hr):** Phase D — benchmarking + LOF-CV (you can skip if Phase C looks promising and you want to ship faster).
-4. **Fourth session (GPU, ~3 hr):** Phase E + Phase F — ablation, transfer, figures.
+1. **First session (CPU notebook, ~2 hr):** Phase A: data download + processing.
+2. **Second session (GPU, ~2 hr):** Phase B + Phase C: train discovery model + headline outputs. **At this point you have the paper's main result.**
+3. **Third session (GPU, ~6-10 hr):** Phase D: benchmarking + LOF-CV (you can skip if Phase C looks promising and you want to ship faster).
+4. **Fourth session (GPU, ~3 hr):** Phase E + Phase F: ablation, transfer, figures.
 
 ## What does NOT change
 
-- Architecture (encoders, contrastive head, fusion, spatial smoothing) — already in place.
-- LOF-cluster-out CV — already in place.
-- Focal loss + oversampling balance — already corrected.
-- Reproducibility scaffolding (configs, scripts, checkpoints) — already in place.
+- Architecture (encoders, contrastive head, fusion, spatial smoothing), already in place.
+- LOF-cluster-out CV: already in place.
+- Focal loss + oversampling balance: already corrected.
+- Reproducibility scaffolding (configs, scripts, checkpoints): already in place.

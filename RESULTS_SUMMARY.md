@@ -1,4 +1,4 @@
-# GeoProspectNet — Results Summary (Nature Energy pipeline)
+# GeoProspectNet: Results Summary (Nature Energy pipeline)
 
 This document indexes every artifact produced and the corresponding paper claim.
 
@@ -55,7 +55,7 @@ Headline reading: trees overfit; logistic regression generalises; GeoProspectNet
 
 ## GeoProspectNet vs Mordensky 2023 (Great Basin sub-domain, 187 K cells)
 
-Same hold-out + NC3 cohorts, same continental percentile scale. GeoProspectNet wins on every metric, most dramatically on specificity (NC3 mean pct = 1.2 vs 31–40 for Mordensky's seven methods).
+Same hold-out + NC3 cohorts, same continental percentile scale. GeoProspectNet wins on every metric, most dramatically on specificity (NC3 mean pct = 1.2 vs 31-40 for Mordensky's seven methods).
 
 | Method | Hold-out mean pct | Hold-out top-10 % | NC3 mean pct | IoU vs GPN top-1 % |
 |---|---:|---:|---:|---:|
@@ -68,23 +68,23 @@ Same hold-out + NC3 cohorts, same continental percentile scale. GeoProspectNet w
 | Mordensky enXGB | 95.5 | 81.8 % | 31.1 | 0.077 |
 | Mordensky enSVM | 95.3 | 90.9 % | 40.8 | 0.024 |
 
-The low IoU (0.02–0.16) shows GeoProspectNet identifies largely new candidate sites Mordensky's methods miss. (File: `outputs/results/mordensky_comparison.csv`.)
+The low IoU (0.02-0.16) shows GeoProspectNet identifies largely new candidate sites Mordensky's methods miss. (File: `outputs/results/mordensky_comparison.csv`.)
 
 ## Top discoveries (Table 3)
 
 | # | Lat | Lon | Province | Area km² | T_res °C | MWe central | Nearby Nevada permits |
 |---:|---:|---:|---|---:|---:|---:|---|
-| 45 | 40.53°N | −116.78°W | Basin & Range | 832 | 219 | **764** | **NBMG 34-41, 34-83, 1-85, 10-45** (1.5–11.8 km) |
-| 49 | 40.74°N | −114.78°W | Basin & Range | 448 | 231 | 451 | — |
-| 20 | 38.13°N | −112.69°W | Rocky Mountain | 384 | 199 | 300 | — |
-| 43 | 40.19°N | −115.28°W | Basin & Range | 272 | 217 | 246 | — |
-| 33 | 39.06°N | −123.31°W | Other (Coast Ranges) | 288 | 203 | 233 | — |
+| 45 | 40.53°N | −116.78°W | Basin & Range | 832 | 219 | **764** | **NBMG 34-41, 34-83, 1-85, 10-45** (1.5-11.8 km) |
+| 49 | 40.74°N | −114.78°W | Basin & Range | 448 | 231 | 451 | - |
+| 20 | 38.13°N | −112.69°W | Rocky Mountain | 384 | 199 | 300 | - |
+| 43 | 40.19°N | −115.28°W | Basin & Range | 272 | 217 | 246 | - |
+| 33 | 39.06°N | −123.31°W | Other (Coast Ranges) | 288 | 203 | 233 | - |
 
 (Full list: `outputs/results/consensus_with_mwe.csv`.)
 
 ## Modality importance (permutation, attention)
 
-ΔAUROC under permutation is 0.000 for all three modalities — the model is robust to single-modality removal at full AUROC. The *attention pattern* by province (Fig. 6 / Table SI-2) tells the more informative story:
+ΔAUROC under permutation is 0.000 for all three modalities, the model is robust to single-modality removal at full AUROC. The *attention pattern* by province (Fig. 6 / Table SI-2) tells the more informative story:
 
 | Province | Geophysics | Geochemistry | Geology |
 |---|---:|---:|---:|
@@ -106,7 +106,7 @@ Geochemistry dominates where springs concentrate (Snake River Plain, Rocky Mount
 
 LOFCV reaches the same ceiling as the random-split test set: feature space is well separable on labelled cells. The meaningful generalisation evidence is the post-2008 temporal hold-out (Section "Cohort validation"), where the test cohort is *real positives the model has never seen*.
 
-## MWe estimation v2 — temperature-dependent efficiency, Monte Carlo
+## MWe estimation v2: temperature-dependent efficiency, Monte Carlo
 
 Replaces the flat 10 % recovery × 10 % conversion constants with physics-based,
 plant-type-aware distributions and propagates uncertainty via Monte Carlo
@@ -116,9 +116,9 @@ plant-type-aware distributions and propagates uncertainty via Monte Carlo
 |---|---|---|
 | Conversion efficiency η | constant 0.10 | 0.45 × η_Carnot(T_res, T_ref=90 °C), capped 0.18 |
 | Recovery factor RF | constant 0.10 | Lognormal: 0.08 (binary), 0.12 (flash), 0.17 (high-T) |
-| Reservoir thickness | constant 250 m | Lognormal(μ=ln 250, σ=0.55), 60–1000 m |
-| T_res uncertainty | ±25 °C bands | Normal(T_est, σ=20 °C), truncated 50–320 °C |
-| Total MWe (33 sites) | 4 334 central [847–11 929] | **6 607 P50** [P10 = 2 492, P90 = 17 130] |
+| Reservoir thickness | constant 250 m | Lognormal(μ=ln 250, σ=0.55), 60-1000 m |
+| T_res uncertainty | ±25 °C bands | Normal(T_est, σ=20 °C), truncated 50-320 °C |
+| Total MWe (33 sites) | 4 334 central [847-11 929] | **6 607 P50** [P10 = 2 492, P90 = 17 130] |
 | Implied multiplier of US installed | 1.14× | **1.74×** |
 
 Why the central rose: temperature-dependent η at the 200 °C reservoirs we sample
@@ -139,12 +139,12 @@ or just the proximity-to-labels heuristic.
 | NC5 Colorado Plateau strict | 1 231 | 43.0 | −0.63 | 177 km |
 | NC6 Montana/Wyoming platform | 14 568 | 23.1 | −0.62 | 377 km |
 
-NC4 — the strictest test (cratonic interior, low heat flow, no Cenozoic
-igneous within 100 km) — sits at the 10th percentile, near NC3. The model
+NC4, the strictest test (cratonic interior, low heat flow, no Cenozoic
+igneous within 100 km), sits at the 10th percentile, near NC3. The model
 treats geologically-implausible cells as low-prospectivity even when the
 only training-time negative criterion they would not satisfy is "far from
 springs." NC5/NC6 score higher because some plateau cells overlap structural
-or spring proxies the model has learned to associate with hidden systems —
+or spring proxies the model has learned to associate with hidden systems, 
 the model isn't perfectly specific to Basin & Range, which we disclose
 honestly. File: `outputs/results/hard_negative_cohorts.csv`.
 
@@ -155,7 +155,7 @@ caching bug: `src/training/train.py` reads a pinned `splits/train_val_test.json`
 file regardless of the current `labels.npy`. The four retrains at ratios 3 / 5 /
 10 / 20 therefore all trained on the same 8 217 cached cells and produced
 identical models (Spearman = 1.000 across all four). A proper sweep would
-require rebuilding the splits inside the sweep loop — left as future work.
+require rebuilding the splits inside the sweep loop, left as future work.
 
 What we *can* report from the configs that built fresh splits:
 
@@ -168,7 +168,7 @@ What we *can* report from the configs that built fresh splits:
 
 Moving 5× → 10× lifts the gap by 4 points (with the larger architecture).
 Moving 10× → 20× does not improve further (the candidate pool caps at ≈ 20×
-so this isn't a true 20× — it's just "all eligible negatives"). The honest
+so this isn't a true 20×, it's just "all eligible negatives"). The honest
 reading: more negatives help up to ~10×; past that, the binding constraint
 is the candidate pool size, not the ratio. File: `outputs/results/neg_pool_sweep.csv`
 (records the no-op result), `outputs/results/full_ablation_table.csv`
@@ -188,8 +188,8 @@ is the candidate pool size, not the ratio. File: `outputs/results/neg_pool_sweep
 | Hot Springs, VA | 42 | thermal | **3** ✗ |
 
 Mean eastern percentile = 49.4 (random); top-10 % capture = 14 % (1/7).
-Western-trained model partially transfers — high-temperature Warm Springs
-GA at 95 ᵗʰ, Hot Springs AR at 74 ᵗʰ — but misses Appalachian aquifer-fed
+Western-trained model partially transfers, high-temperature Warm Springs
+GA at 95 ᵗʰ, Hot Springs AR at 74 ᵗʰ, but misses Appalachian aquifer-fed
 warm springs (VA, WV). Honest geographical generalisation failure that
 would require fine-tuning with eastern labels or a fully separate eastern
 model. File: `outputs/results/ood_eastern_us_validation.csv`.
@@ -198,18 +198,18 @@ model. File: `outputs/results/ood_eastern_us_validation.csv`.
 
 | Variant | Pos pct | NC3 pct | Hold-out pct | Gap | Δ vs full |
 |---|---:|---:|---:|---:|---:|
-| **cpu_margin (full)** | 89.2 | 5.2 | 98.6 | **84.0** | — |
+| **cpu_margin (full)** | 89.2 | 5.2 | 98.6 | **84.0** | - |
 | − contrastive loss | 86.5 | 5.5 | 94.6 | 81.0 | **−3.0 pp gap, −4.0 pp hold-out** |
 | − spatial smoothing | 89.2 | 5.2 | 98.6 | 84.0 | 0 (null-op at inference) |
 | − attention fusion (→ equal-weight) | 89.2 | 5.2 | 98.6 | 84.0 | 0 |
 
 Two honest findings:
 
-1. **Contrastive auxiliary loss is the only architecture component that measurably matters** — removing it costs 3 percentile points on the separation gap and 4 points on the temporal hold-out. The contrastive objective forces same-province cells to share embeddings, which generalises better than the BCE-only signal.
+1. **Contrastive auxiliary loss is the only architecture component that measurably matters**: removing it costs 3 percentile points on the separation gap and 4 points on the temporal hold-out. The contrastive objective forces same-province cells to share embeddings, which generalises better than the BCE-only signal.
 
 2. **Spatial smoothing and attention fusion show no measurable effect on this metric.** Spatial smoothing is a runtime no-op unless neighbour embeddings are passed in (used during discovery, not during the evaluation sweep). Attention vs equal-weight fusion converges to identical continental scores (Spearman = 1.000, L1 = 0.000) because all three modalities are usually present and the projection layer can compensate for any fixed weight pattern.
 
-We disclose these honestly — the contrastive loss is the load-bearing component; the other two are scaffolding that helps in specific contexts (uncertainty quantification, geographical coherence at discovery time) but is not what makes the temporal hold-out work. (File: `outputs/results/separation_sweep.csv`.)
+We disclose these honestly, the contrastive loss is the load-bearing component; the other two are scaffolding that helps in specific contexts (uncertainty quantification, geographical coherence at discovery time) but is not what makes the temporal hold-out work. (File: `outputs/results/separation_sweep.csv`.)
 
 ## Multi-seed sensitivity (cpu_margin × 4 seeds)
 
@@ -221,7 +221,7 @@ We disclose these honestly — the contrastive loss is the load-bearing componen
 | 21 | 87.6 | 5.2 | 82.4 | 97.1 | 100 % |
 | **Mean ± std** | **87.6 ± 1.1** | **5.2 ± 0.1** | **82.4 ± 1.1** | **96.2 ± 2.1** | **92 % ± 11 %** |
 
-Tight standard deviations (1–2 percentile points on most metrics) — discrimination is stable across seeds. (File: `outputs/results/multi_seed_sensitivity.csv`.)
+Tight standard deviations (1-2 percentile points on most metrics), discrimination is stable across seeds. (File: `outputs/results/multi_seed_sensitivity.csv`.)
 
 ## Calibration
 
@@ -287,13 +287,13 @@ notebooks/nature_energy_pipeline.ipynb End-to-end reproduction
 
 Items not run in the autonomous pass (require external steps you'd handle yourself):
 
-1. **Architecture ablation (no-contrastive / no-spatial / concat-fusion)** — 3 separate training runs, ~30 min each
-2. **Negative-pool sweep at additional ratios (35, 50, 100)** — only the bottleneck of 26 K candidate cells is exposed currently
-3. **OOD test on eastern US** — requires pulling SGMC + GMNA over 31–49° N × −103 to −66° W (extra ~50 GB)
-4. **Mordensky 2023 prospectivity comparison** — requires downloading their 78 MB ScienceBase release and reprojecting to our grid
-5. **Cartographic figure polish (cartopy/cartopy.crs)** — install `cartopy` for state outlines and a north-arrow scale bar
-6. **Zenodo DOI** — manual upload required after code freeze
-7. **Pre-print posting on arXiv / EarthArXiv** — manual upload
-8. **Field validation for non-Nevada discoveries** — email Oregon DOGAMI, California Geological Survey, Utah Geological Survey, Idaho Geological Survey
+1. **Architecture ablation (no-contrastive / no-spatial / concat-fusion)**: 3 separate training runs, ~30 min each
+2. **Negative-pool sweep at additional ratios (35, 50, 100)**: only the bottleneck of 26 K candidate cells is exposed currently
+3. **OOD test on eastern US**: requires pulling SGMC + GMNA over 31-49° N × −103 to −66° W (extra ~50 GB)
+4. **Mordensky 2023 prospectivity comparison**: requires downloading their 78 MB ScienceBase release and reprojecting to our grid
+5. **Cartographic figure polish (cartopy/cartopy.crs)**: install `cartopy` for state outlines and a north-arrow scale bar
+6. **Zenodo DOI**: manual upload required after code freeze
+7. **Pre-print posting on arXiv / EarthArXiv**: manual upload
+8. **Field validation for non-Nevada discoveries**: email Oregon DOGAMI, California Geological Survey, Utah Geological Survey, Idaho Geological Survey
 
 The pipeline above is everything reachable autonomously on this CPU budget. The 8 items above are the explicit gap between "Nature Energy submission-ready" and "Nature Communications-ready"; expect ~3-4 additional weeks of manual + automated work to close them.

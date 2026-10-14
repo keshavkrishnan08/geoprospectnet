@@ -35,7 +35,7 @@ and a brief description for each dataset used by GeoProspectNet.
 
 ## Geology
 
-### Lithology — SGMC
+### Lithology: SGMC
 - **Source:** USGS State Geologic Map Compilation, Data Series 1052, v6.5 (2017)
 - **DOI:** 10.3133/ds1052
 - **Licence:** US Public Domain
@@ -52,14 +52,14 @@ and a brief description for each dataset used by GeoProspectNet.
 
 ## Labels
 
-### Known positives — USGS Williams (2008)
+### Known positives: USGS Williams (2008)
 - **Source:** *Assessment of moderate- and high-temperature geothermal resources of the United States*
 - **DOI:** 10.3133/fs20083082
 - **N:** 345 entries → 280 unique fields after deduplication → 1 370 grid cells within 5 km of any field
 - **Pipeline:** `src/data/build_labels.py::_load_williams_2008`
 
-### Temporal hold-out — Nevada post-2008 permits
-- **Source:** Nevada Division of Minerals geothermal permit database (search dates 2008–2025)
+### Temporal hold-out: Nevada post-2008 permits
+- **Source:** Nevada Division of Minerals geothermal permit database (search dates 2008-2025)
 - **URL:** http://minerals.nv.gov/Programs/Geothermal/
 - **N:** 22 cells corresponding to 19 unique post-2008 permits including:
   - Ormat Dixie Valley LLC 52-15 (permit 1668)
@@ -74,7 +74,7 @@ and a brief description for each dataset used by GeoProspectNet.
 
 ## Negative-control cohorts
 
-- **NC1 Colorado Plateau interior:** grid cells in 36–40°N, −111° to −108°W that are > 200 km from any USGS field
+- **NC1 Colorado Plateau interior:** grid cells in 36-40°N, −111° to −108°W that are > 200 km from any USGS field
 - **NC3 random deep:** grid cells > 100 km from any USGS field AND lacking geochemistry coverage (proxy for no nearby springs)
 - **Random western US:** uniform random sample of 100 cells across the study region
 
@@ -86,9 +86,9 @@ The 7 GB of processed-array files (`data/processed/*.npy`) live in this repo at:
 - `geophysics_patches.npy`  shape (N, 6, 32, 32)
 - `geochemistry_features.npy`  shape (N, 9)
 - `geology_features.npy`  shape (N, 11)
-- `modality_masks.npy`  shape (N, 3)  — per-modality coverage masks
-- `labels.npy`  shape (N,)  — 0/1
-- `train_mask.npy`  shape (N,)  — bool
+- `modality_masks.npy`  shape (N, 3): per-modality coverage masks
+- `labels.npy`  shape (N): 0/1
+- `train_mask.npy`  shape (N): bool
 - `grid_coordinates.csv`  N rows of (cell_id, row, col, lat, lon, province)
 
 For external mirroring (Zenodo DOI to be issued upon publication), bundle the entire `data/processed/` directory.
