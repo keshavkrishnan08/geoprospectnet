@@ -36,7 +36,7 @@ def main():
 
     csv_path = ROOT / args.validation_csv
     if not csv_path.exists():
-        print(f"[warn] {csv_path} missing — skipping blind validation")
+        print(f"[warn] {csv_path} missing, skipping blind validation")
         return
     sites = pd.read_csv(csv_path)
 

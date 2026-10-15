@@ -91,7 +91,7 @@ def main():
     cbar = plt.colorbar(im, ax=ax, shrink=0.7, pad=0.02)
     cbar.set_label("p(geothermal)")
     ax.legend(loc="lower left", framealpha=0.9)
-    ax.set_title("GeoProspectNet — Continental Geothermal Prospectivity (Western US)")
+    ax.set_title("GeoProspectNet, Continental Geothermal Prospectivity (Western US)")
 
     out = figs / "figure4_prospectivity_map.png"
     plt.savefig(out, dpi=300, bbox_inches="tight")

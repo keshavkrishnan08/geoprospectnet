@@ -32,7 +32,7 @@ if t2.exists():
 t3 = res / "table3_discoveries.csv"
 if t3.exists():
     df = pd.read_csv(t3)
-    print(f"\n=== Table 3 (Discoveries — {len(df)} sites) ===")
+    print(f"\n=== Table 3 (Discoveries, {len(df)} sites) ===")
     print(df.head(15).to_string(index=False))
     print(f"\nPlausible share: {(df['plausibility']=='plausible').mean():.1%}")
 

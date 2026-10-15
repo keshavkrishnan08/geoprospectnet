@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Overnight CPU pipeline — runs everything that's missing, end-to-end.
+# Overnight CPU pipeline: runs everything that's missing, end-to-end.
 #
 # Phases (sequential, each idempotent):
 #   1. pytest integration suite (fail fast if data/checkpoints are broken)
@@ -51,7 +51,7 @@ run_phase () {
         banner "PHASE ${id} OK (${dt}s)"
     else
         local dt=$(($(date +%s) - t0))
-        banner "PHASE ${id} FAILED after ${dt}s — continuing"
+        banner "PHASE ${id} FAILED after ${dt}s, continuing"
         return 1
     fi
 }

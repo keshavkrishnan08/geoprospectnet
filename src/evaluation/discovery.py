@@ -246,7 +246,7 @@ def main():
     meta = ROOT / cfg["paths"]["metadata_dir"]
     fields_path = meta / "known_fields_details.csv"
     if not fields_path.exists():
-        print(f"[warn] {fields_path} missing — skipping known-field exclusion")
+        print(f"[warn] {fields_path} missing, skipping known-field exclusion")
         fields = pd.DataFrame(columns=["lat", "lon"])
     else:
         fields = pd.read_csv(fields_path)

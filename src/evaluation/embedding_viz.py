@@ -76,7 +76,7 @@ def main():
     ax = axes[0]
     ax.scatter(Z2[Y == 0, 0], Z2[Y == 0, 1], s=4, alpha=0.3, c="#888888", label="negative")
     ax.scatter(Z2[Y == 1, 0], Z2[Y == 1, 1], s=8, alpha=0.7, c="#d62728", label="positive")
-    ax.set_title("Fused embeddings — by label")
+    ax.set_title("Fused embeddings, by label")
     ax.legend()
     ax.set_xticks([]); ax.set_yticks([])
 
@@ -107,7 +107,7 @@ def main():
         if mask.sum():
             ax.scatter(Z2[mask, 0], Z2[mask, 1], s=4, alpha=0.5,
                        c=color, label=prov)
-    ax.set_title("Fused embeddings — by tectonic province")
+    ax.set_title("Fused embeddings, by tectonic province")
     ax.legend(fontsize=8, markerscale=2)
     ax.set_xticks([]); ax.set_yticks([])
 

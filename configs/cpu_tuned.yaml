@@ -1,4 +1,4 @@
-# Tuned config — bigger model, more negatives, gentle focal, longer training.
+# Tuned config: bigger model, more negatives, gentle focal, longer training.
 # Goal: maximise the gap between positive and negative-control percentile.
 #
 # Changes vs cpu_calibrated.yaml:

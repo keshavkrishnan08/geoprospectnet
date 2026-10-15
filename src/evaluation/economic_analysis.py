@@ -115,7 +115,7 @@ def main():
     out_csv = ROOT / "outputs/results/economic_analysis.csv"
     df_out = pd.DataFrame([
         {"metric": "Total MWe P50",                   "value": f"{mwe_p50:.0f} MWe"},
-        {"metric": "Total MWe P10–P90 band",          "value": f"{mwe_p10:.0f}–{mwe_p90:.0f} MWe"},
+        {"metric": "Total MWe P10-P90 band",          "value": f"{mwe_p10:.0f}-{mwe_p90:.0f} MWe"},
         {"metric": "LCOE baseline (NREL ATB 2023)",   "value": f"${lcoe_baseline:.1f} / MWh"},
         {"metric": "LCOE cheap case",                 "value": f"${lcoe_cheap:.1f} / MWh"},
         {"metric": "LCOE expensive case",             "value": f"${lcoe_expensive:.1f} / MWh"},
@@ -128,7 +128,7 @@ def main():
         {"metric": "Annual generation P50",           "value": f"{annual_TWh_p50:.1f} TWh/yr"},
         {"metric": "CO₂ displaced per year P50",      "value": f"{co2_displaced_Mt_p50:.1f} Mt CO₂/yr"},
         {"metric": "CO₂ displaced over 30-yr lifetime P50", "value": f"{co2_displaced_Mt_p50*30:.0f} Mt CO₂"},
-        {"metric": "CO₂ band over 30 yr (P10–P90)",   "value": f"{co2_displaced_Mt_p10*30:.0f}–{co2_displaced_Mt_p90*30:.0f} Mt CO₂"},
+        {"metric": "CO₂ band over 30 yr (P10-P90)",   "value": f"{co2_displaced_Mt_p10*30:.0f}-{co2_displaced_Mt_p90*30:.0f} Mt CO₂"},
         {"metric": "vs US 2023 installed (3 800 MWe)", "value": f"{summary['capacity_multiplier_p50']:.2f}× at P50"},
     ])
     df_out.to_csv(out_csv, index=False)

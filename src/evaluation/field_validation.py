@@ -47,7 +47,7 @@ def main():
             "p_mean": disc.p_mean,
             "n_nearby_permits_25km": int(sum(d <= 25 for d in dists[di])),
             "nearest_permit_km": float(dists[di][0]),
-            "nearest_permits": "; ".join(nearest) if nearest else "—",
+            "nearest_permits": "; ".join(nearest) if nearest else "-",
         })
     df = pd.DataFrame(rows).sort_values("n_nearby_permits_25km", ascending=False)
     out_csv = ROOT / "outputs/results/field_validation.csv"

@@ -5,7 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-# Sync only the things worth saving — not raw data (recoverable) or random
+# Sync only the things worth saving: not raw data (recoverable) or random
 # scratch files.
 tar czf /kaggle/working/geoprospect_outputs.tar.gz \
     outputs/results \

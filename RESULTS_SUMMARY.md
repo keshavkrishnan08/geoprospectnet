@@ -11,7 +11,7 @@ This document indexes every artifact produced and the corresponding paper claim.
 | Post-2008 hold-out sites | 22 | `data/raw/labels/nv_permits_holdout.csv` |
 | Hold-out mean percentile | **95.7** | `outputs/results/negative_controls_cpu_max.csv` |
 | Hold-out top-10 % capture | **100 %** | same |
-| Positive–NC3 separation gap | **84 pp** | `outputs/results/separation_sweep.csv` |
+| Positive-NC3 separation gap | **84 pp** | `outputs/results/separation_sweep.csv` |
 | Consensus discoveries | **33** | `outputs/results/consensus_discoveries.csv` |
 | Plausible share | **94 %** (31/33 in valid province) | same |
 | Cumulative recoverable MWe (Monte Carlo P50) | **6 607** [P10 = 2 492, P90 = 17 130] | `outputs/results/consensus_with_mwe_v2.csv` |

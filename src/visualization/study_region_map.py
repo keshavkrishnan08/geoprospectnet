@@ -47,7 +47,7 @@ def main():
         ax.scatter(fields["lon"], fields["lat"], marker="^",
                    c="red", s=20, edgecolor="white", linewidth=0.4,
                    label="Known geothermal field")
-    ax.set_title("Western US study region — data coverage and known fields")
+    ax.set_title("Western US study region, data coverage and known fields")
     ax.set_xlabel("Longitude"); ax.set_ylabel("Latitude")
     ax.legend(loc="lower left")
 

@@ -1,4 +1,4 @@
-# MAX-data config — train on as many labeled cells as the negative-criteria
+# MAX-data config: train on as many labeled cells as the negative-criteria
 # pool allows. Goal: give the network maximum exposure to non-geothermal
 # geology so the discovery score is sharp and reviewer-credible.
 #

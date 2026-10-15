@@ -37,7 +37,7 @@ MGAL_TO_SI = 1e-5  # 1 mGal = 1e-5 m/s^2
 # coefficient for converting mGal to metres of basin fill (positive sign):
 MGAL_TO_METRES = MGAL_TO_SI / (2 * np.pi * G_const * abs(DELTA_RHO))  # ≈ 14894 m / mGal: too big
 # the standard rule-of-thumb in geophysics is: 1 mGal of residual ≈
-# ~10–25 m of basin fill, but exact value depends on density contrast.
+# ~10-25 m of basin fill, but exact value depends on density contrast.
 # We adopt the conservative geophysics convention of ~50 m / mGal residual.
 # (Telford, "Applied Geophysics", 2nd ed., section 2.3.6.)
 M_PER_MGAL_RESIDUAL = 50.0
@@ -102,7 +102,7 @@ def main():
     out_csv = ROOT / "outputs/results/reservoir_thickness_validation.csv"
     out.to_csv(out_csv, index=False)
 
-    print("=== RESERVOIR THICKNESS — gravity-derived basin sediment estimate ===")
+    print("=== RESERVOIR THICKNESS, gravity-derived basin sediment estimate ===")
     print(f"prior (Williams 2008): 250 m (lognormal σ=0.55, range ~80-750 m at 1σ)")
     print()
     print(out.head(15)[["discovery_id", "lat", "lon", "province",
@@ -111,7 +111,7 @@ def main():
     print()
     print(f"Distribution across all 33 discoveries:")
     print(f"  median thickness: {out.estimated_sediment_thickness_m.median():.0f} m")
-    print(f"  IQR             : {out.estimated_sediment_thickness_m.quantile(0.25):.0f}–{out.estimated_sediment_thickness_m.quantile(0.75):.0f} m")
+    print(f"  IQR             : {out.estimated_sediment_thickness_m.quantile(0.25):.0f}-{out.estimated_sediment_thickness_m.quantile(0.75):.0f} m")
     print(f"  min / max       : {out.estimated_sediment_thickness_m.min():.0f} / {out.estimated_sediment_thickness_m.max():.0f} m")
     print(f"  fraction ≥ 200 m: {(out.estimated_sediment_thickness_m >= 200).mean():.1%}")
     print()

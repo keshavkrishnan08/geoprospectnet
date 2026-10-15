@@ -12,7 +12,7 @@ study_region:
   distance_crs: "EPSG:5070"
 
 modalities:
-  use_thermal: false      # skip Landsat for the smoke test — fewer files needed
+  use_thermal: false      # skip Landsat for the smoke test, fewer files needed
   n_geophys_channels: 6
   geophys_patch_size: 32
   n_geochem_features: 9

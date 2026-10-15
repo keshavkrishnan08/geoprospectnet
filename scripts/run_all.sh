@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# End-to-end pipeline — DISCOVERY-FIRST ordering.
+# End-to-end pipeline: DISCOVERY-FIRST ordering.
 #
 # The headline output is the ranked candidate-site list with MWe estimates
 # and the blind-validation result against the Zanskar Big Blind site. The
 # benchmark and ablation tables are supporting evidence for the discovery
-# claim — they run AFTER the discovery, not before it.
+# claim: they run AFTER the discovery, not before it.
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -14,7 +14,7 @@ bash 02_process_data.sh
 
 # --- Phase B: training (discovery model) -----------------------------------
 # Train the model that will produce the headline continental map.
-# Single seed, all labelled data — this is the model we discover with.
+# Single seed, all labelled data: this is the model we discover with.
 python -m src.training.train --config ../configs/default.yaml --random --seed 42
 
 # --- Phase C: discovery (HEADLINE) -----------------------------------------

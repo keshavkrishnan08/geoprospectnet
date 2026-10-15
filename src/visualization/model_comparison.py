@@ -33,7 +33,7 @@ def main():
 
     table_path = res / "table1_main_results.csv"
     if not table_path.exists():
-        print("[warn] no table1 CSV — run cross_validation.py first")
+        print("[warn] no table1 CSV, run cross_validation.py first")
         return
 
     df = pd.read_csv(table_path)

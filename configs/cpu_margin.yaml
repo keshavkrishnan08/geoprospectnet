@@ -1,4 +1,4 @@
-# Margin-loss config — adds explicit positive-negative separation pressure
+# Margin-loss config: adds explicit positive-negative separation pressure
 # on top of cpu_tuned. Push positives above 0.7 and negatives below 0.3.
 
 study_region: {lat_min: 31.0, lat_max: 49.0, lon_min: -125.0, lon_max: -103.0,

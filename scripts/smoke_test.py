@@ -109,7 +109,7 @@ def section_data_files():
     # geophysics_patches.npy is .gitignored: soft check
     p = ROOT / "data/processed/geophysics_patches.npy"
     if not p.exists():
-        print(f"  {WARN} geophysics_patches.npy missing (5.4 GB) — regenerate with src.data.ingest_geophysics")
+        print(f"  {WARN} geophysics_patches.npy missing (5.4 GB), regenerate with src.data.ingest_geophysics")
 
 
 # --------------------------------------------------------------------------
@@ -118,7 +118,7 @@ def section_data_files():
 def section_checkpoints():
     print(f"\n{BOLD}§3  Checkpoint load + tiny inference (skip if patches missing){END}")
     if not (ROOT / "data/processed/geophysics_patches.npy").exists():
-        print(f"  {WARN} geophysics_patches.npy missing — skipping inference smoke test")
+        print(f"  {WARN} geophysics_patches.npy missing, skipping inference smoke test")
         return
     import torch, yaml
     from src.data.dataset import GeoProspectDataset, make_loader
@@ -126,7 +126,7 @@ def section_checkpoints():
 
     ckpts = sorted((ROOT / "outputs/checkpoints").glob("random_cpu_*_seed42.pt"))
     if not ckpts:
-        print(f"  {WARN} no checkpoints found — skipping")
+        print(f"  {WARN} no checkpoints found, skipping")
         return
 
     cfg_for_ckpt = {
@@ -256,7 +256,7 @@ def section_preregistration_hash():
 
 # --------------------------------------------------------------------------
 def main():
-    print(f"{BOLD}GeoProspectNet — pipeline smoke test{END}")
+    print(f"{BOLD}GeoProspectNet, pipeline smoke test{END}")
     print(f"root: {ROOT}")
     t0 = time.time()
     sections = [
@@ -290,7 +290,7 @@ def main():
             if not ok:
                 print(f"  {FAIL} {name}: {detail}")
         sys.exit(1)
-    print(f"\n{GREEN}{BOLD}smoke test PASSED — pipeline is healthy{END}")
+    print(f"\n{GREEN}{BOLD}smoke test PASSED, pipeline is healthy{END}")
 
 
 if __name__ == "__main__":

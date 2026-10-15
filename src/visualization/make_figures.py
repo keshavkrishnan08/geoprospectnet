@@ -155,7 +155,7 @@ def fig1_prospectivity_map():
 
     ax.set_xlabel("Longitude (° W)")
     ax.set_ylabel("Latitude (° N)")
-    ax.set_title("Continental geothermal prospectivity — western United States",
+    ax.set_title("Continental geothermal prospectivity, western United States",
                   loc="left", weight="semibold")
     ax.set_xlim(grid.lon.min(), grid.lon.max())
     ax.set_ylim(grid.lat.min(), grid.lat.max())
@@ -189,7 +189,7 @@ def fig2_uncertainty_map():
                     cmap=GEOTHERM_CMAP, vmin=0,
                     vmax=float(np.percentile(std, 99)), interpolation="bilinear")
     ax.set_xlabel("Longitude (° W)"); ax.set_ylabel("Latitude (° N)")
-    ax.set_title("Epistemic uncertainty — MC-Dropout standard deviation",
+    ax.set_title("Epistemic uncertainty, MC-Dropout standard deviation",
                   loc="left", weight="semibold")
     ax.grid(False)
     cb = fig.colorbar(im, ax=ax, shrink=0.8, pad=0.02)
@@ -323,7 +323,7 @@ def fig4_baselines():
                       color=PALETTE["ink"])
     _annotate_panel(axes[1], "b")
 
-    fig.suptitle("Baselines vs GeoProspectNet — generalisation exposed by temporal hold-out",
+    fig.suptitle("Baselines vs GeoProspectNet, generalisation exposed by temporal hold-out",
                   fontsize=13, weight="semibold", color=PALETTE["ink"], y=1.03)
     _save(fig, "fig4_baselines")
 
@@ -349,7 +349,7 @@ def fig5_calibration():
     ax.set_xlabel("Mean predicted probability per bin")
     ax.set_ylabel("Observed positive frequency")
     ax.set_title(
-        f"Reliability diagram — Brier = {summary['brier_score']:.4f}, "
+        f"Reliability diagram, Brier = {summary['brier_score']:.4f}, "
         f"ECE = {summary['expected_calibration_error']:.4f}",
         loc="left", weight="semibold")
     cb = fig.colorbar(sc, ax=ax, shrink=0.78, pad=0.02)
@@ -411,7 +411,7 @@ def fig7_mwe():
                      edgecolor="white", linewidth=0.4, zorder=5)
     axes[0].set_xlabel("Discovery rank (by P50 MWe)")
     axes[0].set_ylabel("Recoverable resource  (MWe)")
-    axes[0].set_title("Per-discovery MWe — P10 to P90",
+    axes[0].set_title("Per-discovery MWe, P10 to P90",
                        loc="left", weight="semibold")
     axes[0].set_xlim(-1, len(mwe))
     _annotate_panel(axes[0], "a")
@@ -419,13 +419,13 @@ def fig7_mwe():
     cum_c = np.cumsum(central)
     cum_lo = np.cumsum(lo); cum_hi = np.cumsum(hi)
     axes[1].fill_between(x, cum_lo, cum_hi, color=PALETTE["ochre"], alpha=0.18,
-                          linewidth=0, label="P10–P90 band")
+                          linewidth=0, label="P10-P90 band")
     axes[1].plot(x, cum_c, color=PALETTE["magma_red"], lw=2.4, label="P50")
     axes[1].axhline(3800, ls="--", color=PALETTE["stone"], lw=1.0,
                      label="US installed capacity 2023")
     axes[1].set_xlabel("Discoveries cumulated by MWe")
     axes[1].set_ylabel("Cumulative MWe")
-    axes[1].set_title(f"Cumulative resource — P50 total = {cum_c[-1]:,.0f} MWe",
+    axes[1].set_title(f"Cumulative resource, P50 total = {cum_c[-1]:,.0f} MWe",
                        loc="left", weight="semibold")
     axes[1].set_xlim(-1, len(mwe))
     axes[1].legend(loc="lower right")
@@ -460,7 +460,7 @@ def fig8_ablation_separation():
                 linewidth=0.4, label=t, alpha=0.93)
     ax.set_xticks(x); ax.set_xticklabels(sw["label"])
     ax.set_ylabel("Mean continental percentile rank")
-    ax.set_title("Loss + data ablation — separation across cohorts",
+    ax.set_title("Loss + data ablation, separation across cohorts",
                   loc="left", weight="semibold")
     ax.legend(loc="center left", bbox_to_anchor=(1.02, 0.5))
     ax.set_ylim(0, 100)
@@ -503,7 +503,7 @@ def fig9_mordensky():
         axes[1].text(v + 0.6, i, f"{v:.1f}", va="center", fontsize=9.5)
     _annotate_panel(axes[1], "b")
 
-    fig.suptitle("GeoProspectNet vs Mordensky 2023 — Great Basin sub-domain",
+    fig.suptitle("GeoProspectNet vs Mordensky 2023, Great Basin sub-domain",
                   fontsize=13, weight="semibold", y=1.03)
     _save(fig, "fig9_mordensky_comparison")
 
@@ -587,7 +587,7 @@ def fig11_architecture_ablation():
         axes[1].text(v + 0.13, i, f"{v:.2f}", va="center", fontsize=9.5)
     _annotate_panel(axes[1], "b")
 
-    fig.suptitle("Architecture ablation — only the contrastive loss measurably contributes",
+    fig.suptitle("Architecture ablation, only the contrastive loss measurably contributes",
                   fontsize=13, weight="semibold", y=1.03)
     _save(fig, "fig11_architecture_ablation")
 
@@ -613,7 +613,7 @@ def fig12_ood_eastern():
     ax.axvline(90, ls=":", color=PALETTE["deep_red"], lw=0.8, label="Top-10 %")
     ax.set_xlim(0, 102)
     ax.set_xlabel("Eastern-US grid percentile (n = 535 068 cells)")
-    ax.set_title("OOD validation — documented eastern hydrothermal systems",
+    ax.set_title("OOD validation, documented eastern hydrothermal systems",
                   loc="left", weight="semibold")
     for i, v in enumerate(df.percentile):
         ax.text(v + 1, i, f"{v:.1f}", va="center", fontsize=9.5)
@@ -656,7 +656,7 @@ def fig13_discovery_province():
     for i, v in enumerate(g.mwe.values):
         axes[1].text(v + 60, i, f"{v:,.0f}", va="center", fontsize=9.5)
     _annotate_panel(axes[1], "b")
-    fig.suptitle("Discovery geography — concentrated in Basin & Range and Cascades",
+    fig.suptitle("Discovery geography, concentrated in Basin & Range and Cascades",
                   fontsize=12.5, weight="semibold", y=1.03)
     _save(fig, "fig13_discovery_province")
 
@@ -820,7 +820,7 @@ def fig16_economics():
                       ha="center", fontsize=10, color=PALETTE["ink"])
     _annotate_panel(axes[2], "c")
 
-    fig.suptitle("Economic and climate framing — 33 consensus discoveries",
+    fig.suptitle("Economic and climate framing, 33 consensus discoveries",
                   fontsize=13, weight="semibold", y=1.04)
     _save(fig, "fig16_economics")
 
@@ -845,7 +845,7 @@ def fig17_reservoir_thickness():
     ax.set_yticks(y[::3])
     ax.set_yticklabels([f"#{int(d)}" for d in df.discovery_id.iloc[::3]])
     ax.set_xlabel("Estimated basin-fill thickness (m, from Bouguer residual)")
-    ax.set_title("Reservoir-thickness validation — gravity-derived basin proxy",
+    ax.set_title("Reservoir-thickness validation, gravity-derived basin proxy",
                   loc="left", weight="semibold")
     ax.legend(loc="lower right")
     ax.grid(axis="x", alpha=0.5); ax.grid(axis="y", visible=False)
@@ -947,7 +947,7 @@ def fig19_summary_card():
                  fontsize=22, color=PALETTE["ink"], weight="bold")
         ax.text(0.04, 0.16, sub, transform=ax.transAxes,
                  fontsize=9, color=PALETTE["stone"])
-    fig.suptitle("GeoProspectNet — headline results",
+    fig.suptitle("GeoProspectNet, headline results",
                   fontsize=15, weight="semibold", color=PALETTE["ink"], y=1.01)
     _save(fig, "fig19_summary_card")
 
@@ -989,7 +989,7 @@ def fig20_generalisation_gap():
                      fontsize=10, color=PALETTE["ink"], weight="medium")
     ax.set_xlabel("AUROC (in-distribution test split)")
     ax.set_ylabel("Capture @ top 10 %  (post-2008 hold-out)")
-    ax.set_title("Generalisation gap — perfect AUROC ≠ generalisation",
+    ax.set_title("Generalisation gap, perfect AUROC ≠ generalisation",
                   loc="left", weight="semibold")
     ax.set_xlim(0.80, 1.02)
     ax.set_ylim(-0.05, 1.10)

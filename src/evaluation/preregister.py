@@ -32,7 +32,7 @@ def main():
 
     ts = datetime.now(timezone.utc).isoformat(timespec="seconds")
     header = (
-        f"# GeoProspectNet — pre-registered candidate discoveries\n"
+        f"# GeoProspectNet, pre-registered candidate discoveries\n"
         f"# frozen: {ts}\n"
         f"# sha256: {sha256}\n"
         f"# source: outputs/results/consensus_with_mwe_v2.csv\n"

@@ -46,7 +46,7 @@ def main():
         row = {"model": "GeoProspectNet"}
         for k in REPORTED:
             mu, sd = _agg(gpn, key=k)
-            row[k] = f"{mu:.4f} ± {sd:.4f}" if not np.isnan(mu) else "—"
+            row[k] = f"{mu:.4f} ± {sd:.4f}" if not np.isnan(mu) else "-"
         rows.append(row)
 
     # ---- Baselines -------------------------------------------------------
@@ -58,7 +58,7 @@ def main():
             for k in REPORTED:
                 vals = [m.get(k, float("nan")) for m in fold_metrics
                         if not np.isnan(m.get(k, float("nan")))]
-                row[k] = "—" if not vals else f"{np.mean(vals):.4f} ± {np.std(vals):.4f}"
+                row[k] = "-" if not vals else f"{np.mean(vals):.4f} ± {np.std(vals):.4f}"
             rows.append(row)
 
     df = pd.DataFrame(rows)

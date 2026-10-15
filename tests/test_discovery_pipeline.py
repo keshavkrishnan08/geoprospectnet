@@ -39,7 +39,7 @@ def test_continental_uncertainty_higher_in_score_tail(root: Path):
         pytest.skip("not enough cells in either tail")
     assert sigma[high].mean() > 5 * sigma[very_low].mean(), (
         f"σ(high)={sigma[high].mean():.4f} vs σ(near-0)={sigma[very_low].mean():.4f} "
-        f"— dropout looks degenerate")
+        f"dropout looks degenerate")
 
 
 def test_consensus_discoveries_have_fields(root: Path):

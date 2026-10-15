@@ -68,7 +68,7 @@ def main():
           f"({int(labels[test_idx].sum())} pos)")
 
     if len(train_idx) < 100 or len(test_idx) < 50:
-        print("[warn] insufficient cells in one of the provinces — aborting")
+        print("[warn] insufficient cells in one of the provinces, aborting")
         return
 
     r, _ = train_one_split(

@@ -70,7 +70,7 @@ Place the resulting files at the indicated paths under data/raw/.
    - Page: https://www.ngdc.noaa.gov/hazard/thermal.shtml
    - Expected: data/raw/geochemistry/thermal_springs.csv
 
-6. Smithsonian Global Volcanism Program — Holocene Volcanoes
+6. Smithsonian Global Volcanism Program, Holocene Volcanoes
    - Page: https://volcano.si.edu/volcanolist_holocene.cfm  (click "Download List")
    - Expected: data/raw/geology/holocene_volcanoes.csv
 
@@ -79,7 +79,7 @@ Place the resulting files at the indicated paths under data/raw/.
             eio clip -o data/raw/geology/srtm_elevation.tif --bounds -125 31 -103 49
    - Or use the Python `elevation` package directly.
 
-8. Landsat thermal anomaly (OPTIONAL — modality can be skipped)
+8. Landsat thermal anomaly (OPTIONAL, modality can be skipped)
    - Run the GEE script documented in DATA.md (Landsat section)
    - Expected: data/raw/satellite/thermal_anomaly.tif
 

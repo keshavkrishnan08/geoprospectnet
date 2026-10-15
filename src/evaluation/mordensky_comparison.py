@@ -77,7 +77,7 @@ def main():
 
     rows = []
     for name, s in methods.items():
-        # rank scores ascending → percentile 0–100 within Mordensky domain
+        # rank scores ascending → percentile 0-100 within Mordensky domain
         sort = np.argsort(s)
         rank = np.empty_like(sort, dtype=np.int64)
         rank[sort] = np.arange(len(s))

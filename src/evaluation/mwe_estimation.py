@@ -94,7 +94,7 @@ def main():
 
     src = ROOT / args.in_csv
     if not src.exists():
-        print(f"[warn] {src} missing — run discovery first")
+        print(f"[warn] {src} missing, run discovery first")
         return
     discoveries = pd.read_csv(src)
     if len(discoveries) == 0:

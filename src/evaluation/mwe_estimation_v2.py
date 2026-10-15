@@ -185,7 +185,7 @@ def main():
     mean_sum = float(out.mwe_mean.sum())
     print(f"\nCumulative recoverable resource (Monte-Carlo over {args.n_samples} draws/site):")
     print(f"  P10     {p10_sum:7.0f} MWe   (conservative)")
-    print(f"  P50     {p50_sum:7.0f} MWe   (central estimate — Nature Energy headline)")
+    print(f"  P50     {p50_sum:7.0f} MWe   (central estimate, Nature Energy headline)")
     print(f"  P90     {p90_sum:7.0f} MWe   (optimistic)")
     print(f"  mean    {mean_sum:7.0f} MWe")
     print(f"\n  US installed (2023): 3 800 MWe → P50 / installed = {p50_sum/3800:.2f}×")

@@ -1,4 +1,4 @@
-# Calibrated CPU config — fixes the focal+oversampling collapse where
+# Calibrated CPU config: fixes the focal+oversampling collapse where
 # the previous smoke training drove ~80% of cells above p>0.9.
 #
 # Key changes vs cpu_smoke.yaml:
@@ -47,7 +47,7 @@ training:
   early_stopping_metric: auroc
   positive_oversampling: 1            # no oversampling
   contrastive_weight: 0.5
-  focal_alpha: 0.5                    # symmetric — equivalent to BCE under gamma=0
+  focal_alpha: 0.5                    # symmetric, equivalent to BCE under gamma=0
   focal_gamma: 0.0                    # no focal modulation
   grad_clip: 1.0
   num_workers: 0
