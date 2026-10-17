@@ -65,8 +65,9 @@ def test_checkpoint_loads_and_scores(root, ckpt_name, cfg_path):
     assert (scores >= 0).all() and (scores <= 1).all()
 
 
-def test_cpu_max_real_data_inference(root, cfg_max, cpu_max_model, processed):
+def test_cpu_max_real_data_inference(root, cfg_max, cpu_max_model, processed, require_data):
     """Run cpu_max on 32 real labeled cells and confirm finite scores."""
+    require_data("train_mask.npy", "geophysics_patches.npy")
     from src.data.dataset import GeoProspectDataset, make_loader
     train_mask = np.load(processed / "train_mask.npy").astype(bool)
     idx = np.where(train_mask)[0][:32]

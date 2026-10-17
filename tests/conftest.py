@@ -28,6 +28,24 @@ def processed(root: Path) -> Path:
     return root / "data/processed"
 
 
+# Large processed arrays that are rebuilt locally rather than committed.
+REBUILT_BY = {
+    "geophysics_patches.npy": "python -m src.data.process_geophysics",
+    "train_mask.npy": "python -m src.data.build_labels",
+}
+
+
+@pytest.fixture(scope="session")
+def require_data(processed: Path):
+    """Skip a test, naming the rebuild command, when it needs processed data not in the repo."""
+    def check(*names: str) -> None:
+        missing = [n for n in names if not (processed / n).exists()]
+        if missing:
+            how = "; ".join(f"{n}: {REBUILT_BY.get(n, 'see the data pipeline')}" for n in missing)
+            pytest.skip(f"needs processed data that is not committed ({how})")
+    return check
+
+
 @pytest.fixture(scope="session")
 def labels(processed: Path) -> np.ndarray:
     return np.load(processed / "labels.npy")

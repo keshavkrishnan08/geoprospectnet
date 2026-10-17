@@ -5,7 +5,8 @@ from __future__ import annotations
 import numpy as np
 
 
-def test_grid_array_lengths_match(processed):
+def test_grid_array_lengths_match(processed, require_data):
+    require_data("train_mask.npy", "geophysics_patches.npy")
     labels = np.load(processed / "labels.npy")
     masks = np.load(processed / "modality_masks.npy")
     train_mask = np.load(processed / "train_mask.npy")
@@ -23,7 +24,8 @@ def test_labels_are_binary(labels):
     assert uniq <= {0.0, 1.0}, f"labels contain non-binary values: {uniq}"
 
 
-def test_no_nan_in_features(processed):
+def test_no_nan_in_features(processed, require_data):
+    require_data("geophysics_patches.npy")
     geo = np.load(processed / "geophysics_patches.npy", mmap_mode="r")
     chem = np.load(processed / "geochemistry_features.npy", mmap_mode="r")
     geol = np.load(processed / "geology_features.npy", mmap_mode="r")
